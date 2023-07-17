@@ -1,0 +1,12 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+
+import Character from './character';
+
+export default class Daemon extends Character {
+  constructor(name, type) {
+    super(name, type);
+    this.attack = 10;
+    this.defence = 40;
+  }
+}
