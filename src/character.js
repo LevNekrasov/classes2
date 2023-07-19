@@ -4,20 +4,23 @@
 export default class Character {
   constructor(name, type) {
     const gameType = ['Bowerman', 'Daemon', 'Magician', 'Swordsman', 'Undead', 'Zombie'];
-    if (name.length < 2 || name.length > 10 || gameType.find((el) => el === type) === undefined) {
-      throw new Error('Неверно переданы данные');
+    if (name.length < 2 || name.length > 10) {
+      throw new Error('Неверно передано имя персонажа');
+    }
+    if (!gameType.includes(type)) {
+      throw new Error('Неверно передан тип персонажа');
     }
     this.name = name;
     this.health = 100;
     this.level = 1;
-    this.attack = 0;
-    this.defence = 0;
+    this.attack = undefined;
+    this.defence = undefined;
     this.type = type;
   }
 
   livelUp() {
     if (this.health <= 0) {
-      throw new Error('нельзя повысить левел умершего');
+      throw new Error('нельзя повысить уровень умершего');
     }
     this.level += 1;
     this.attack *= 1.2;
